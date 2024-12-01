@@ -6,10 +6,10 @@ import { HeroImageProps } from './HeroImage.types';
 const StyledHeroImageContainer = styled.div<{ disabled?: boolean }>`
   position: relative;
   width: 100%;
-  height: 300px;
+  height: 315px;
   padding: 10px;
   border-radius: 8px;
-  background-color: ${({ disabled }) => (disabled ? 'lightgray' : '#ccc')};
+  background-color: ${({ disabled }) => (disabled ? 'lightgray' : '#ebe8e8')};
   cursor: ${({ disabled }) => (disabled ? 'not-allowed' : 'pointer')};
   overflow: hidden;
 `;
@@ -25,12 +25,12 @@ const StyledHeroImage = styled.img<{ disabled?: boolean }>`
 // Text overlay for the Hero Image
 const StyledHeroText = styled.div<{ disabled?: boolean }>`
   position: absolute;
-  bottom: 20px;
-  left: 20px;
+  bottom: 22px;
+  left: 22px;
   color: white;
-  font-size: 24px;
+  font-size: 25px;
   background-color: rgba(0, 0, 0, 0.5);
-  padding: 10px 20px;
+  padding: 10px 22px;
   border-radius: 5px;
 `;
 

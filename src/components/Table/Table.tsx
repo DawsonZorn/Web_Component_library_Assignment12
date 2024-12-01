@@ -1,54 +1,45 @@
 import React from 'react';
-
 import styled from 'styled-components';
+import { TableProps } from './Table.types';
+import TableHeader from './TableHeader';
+import TableRow from './TableRow';
+import TableCell from './TableCell';
+import TableFooter from './TableFooter';
 
-
-// Define TableProps to specify rows and columns
-export interface TableProps {
-  headers: string[];  // Table headers
-  rows: string[][];  // Table rows
-}
-
-// Styled components for the table
-const StyledTable = styled.table`
-  width: 100%;  // Full width
-  border-collapse: collapse;  // Collapse borders
+const StyledTable = styled.table<{ disabled?: boolean }>`
+  width: 100%;
+  border-collapse: collapse;
+  background-color: ${({ disabled }) => (disabled ? 'lightgray' : 'white')};
 `;
 
-const StyledHeader = styled.thead`
-  background-color: #f2f2f2;  // Header background color
-`;
-
-const StyledRow = styled.tr`
-  &:nth-child(even) {
-    background-color: #f9f9f9;  // Zebra striping
-  }
-`;
-
-const StyledCell = styled.td`
-  padding: 10px;  // Cell padding
-  border: 1px solid #ddd;  // Cell border
-`;
-
-export const Table: React.FC<TableProps> = ({ headers, rows }) => {
+const Table: React.FC<TableProps> = ({ tableHeader, tableRows, tableFooter, disabled }) => {
   return (
-    <StyledTable>
-      <StyledHeader>
-        <tr>
-          {headers.map((header, index) => (
-            <th key={index}>{header}</th>
+    <StyledTable disabled={disabled}>
+      <TableHeader>
+        <TableRow>
+          {tableHeader.map((header, index) => (
+            <th key={index} style={{ color: header.color }}>{header.text}</th>
           ))}
-        </tr>
-      </StyledHeader>
+        </TableRow>
+      </TableHeader>
       <tbody>
-        {rows.map((row, rowIndex) => (
-          <StyledRow key={rowIndex}>
+        {tableRows.map((row, rowIndex) => (
+          <TableRow key={rowIndex} disabled={disabled}>
             {row.map((cell, cellIndex) => (
-              <StyledCell key={cellIndex}>{cell}</StyledCell>
+              <TableCell key={cellIndex} disabled={disabled} color={cell.color}>{cell.text}</TableCell>
             ))}
-          </StyledRow>
+          </TableRow>
         ))}
       </tbody>
+      <TableFooter>
+        <TableRow>
+          {tableFooter.map((footer, index) => (
+            <TableCell key={index} color={footer.color}>{footer.text}</TableCell>
+          ))}
+        </TableRow>
+      </TableFooter>
     </StyledTable>
   );
 };
+
+export default Table;

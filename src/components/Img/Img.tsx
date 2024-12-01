@@ -5,9 +5,9 @@ import { ImgProps } from './Img.types';
 // Styled component for the image container
 const StyledImgContainer = styled.div<{ disabled?: boolean }>`
    display: inline-block;
-  background-color: ${({ disabled }) => (disabled ? 'lightgray' : '#ccc')};
+  background-color: ${({ disabled }) => (disabled ? 'lightgray' : '#ebe8e8')};
   padding: 8px;
-  width: 300px;
+  width: 315px;
   border-radius: 8px;
   cursor: ${({ disabled }) => (disabled ? 'not-allowed' : 'pointer')}
 `;

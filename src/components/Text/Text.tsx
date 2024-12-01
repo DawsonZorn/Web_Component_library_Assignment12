@@ -1,16 +1,20 @@
 import React from 'react';
 import styled from 'styled-components';
+import { TextProps } from './Text.types';
 
-export interface TextProps {
-  content: string;  // Text content to display
-}
-
-// Styled component for the text
-const StyledText = styled.p<{ size?: 'small' | 'medium' | 'large' }>`
-  font-size: ${({ size }) => (size === 'large' ? '20px' : size === 'small' ? '12px' : '16px')};  // Dynamic font size
-  margin: 0;  // Remove default margin
+const StyledText = styled.p<TextProps>`
+  font-size: ${({ fontSize }) => fontSize || '16px'};
+  font-weight: ${({ fontWeight }) => fontWeight || 'normal'};
+  color: ${({ disabled, color }) => (disabled ? 'gray' : color || '#000')};
+  cursor: ${({ disabled }) => (disabled ? 'not-allowed' : 'default')};
 `;
 
-export const Text: React.FC<TextProps> = ({ content }) => {
-  return <p>{content}</p>;  // Render the text content in a paragraph
+const Text: React.FC<TextProps> = ({ children, fontSize, fontWeight, color, disabled }) => {
+  return (
+    <StyledText fontSize={fontSize} fontWeight={fontWeight} color={color} disabled={disabled}>
+      {children}
+    </StyledText>
+  );
 };
+
+export default Text;

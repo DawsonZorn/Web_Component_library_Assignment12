@@ -4,6 +4,6 @@ export * from "./Dropdown";
 export * from "./HeroImg";
 export * from "./Img";
 export * from "./Label";
-export * from "./Radio";
+export * from "./RadioButton";
 export * from "./Text";
 export * from "./Table";

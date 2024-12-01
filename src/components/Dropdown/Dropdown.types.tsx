@@ -4,6 +4,6 @@ export interface DropdownItemProps {
 }
 
 export interface DropdownProps {
-  items: DropdownItemProps[];
-  disabled?: boolean;
+  items: DropdownItemProps[]; // Array of items with label and value
+  disabled?: boolean; // Optional prop to disable the dropdown
 }

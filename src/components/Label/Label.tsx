@@ -1,23 +1,22 @@
 import React from 'react';
 import styled from 'styled-components';
+import { LabelProps } from './Label.types';
 
-export interface LabelProps {
-  text: string;  // Text for the label
-  htmlFor?: string;  // For attribute to link with input
-}
-
-// Styled component for the label
-const StyledLabel = styled.label`
-  font-weight: bold;  // Bold text
-  font-size: 14px;  // Font size
-  margin-bottom: 5px;  // Margin below the label
-  display: block;  // Display block for better spacing
+const StyledLabel = styled.label<LabelProps>`
+  font-weight: ${({ fontWeight }) => fontWeight || 'bold'};
+  color: white;
+  cursor: ${({ disabled }) => (disabled ? 'not-allowed' : 'default')};
+  background-color: ${({ disabled, bgcolor }) => (disabled ? 'lightgray' : bgcolor || 'blue')};
+  padding: 4px 8px;
+  border-radius: 5px;
 `;
 
-export const Label: React.FC<LabelProps> = ({ text, htmlFor }) => {
+const Label: React.FC<LabelProps> = ({ children, htmlFor, disabled, bgcolor, fontWeight }) => {
   return (
-    <label htmlFor={htmlFor}>
-      {text}
-    </label>
+    <StyledLabel htmlFor={htmlFor} disabled={disabled} bgcolor={bgcolor} fontWeight={fontWeight}>
+      {children}
+    </StyledLabel>
   );
 };
+
+export default Label;

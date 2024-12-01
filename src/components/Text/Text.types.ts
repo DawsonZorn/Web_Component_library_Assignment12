@@ -1,3 +1,7 @@
 export interface TextProps {
-  content: string;
+  children: React.ReactNode;
+  fontSize?: string;
+  fontWeight?: string;
+  color?: string;
+  disabled?: boolean;
 }

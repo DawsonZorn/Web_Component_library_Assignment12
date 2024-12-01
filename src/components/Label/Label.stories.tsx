@@ -1,16 +1,35 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { Label } from './Label';
+import Label from './Label';
 
-const meta = {
+const meta: Meta<typeof Label> = {
   title: 'Components/Label',
   component: Label,
-} satisfies Meta<typeof Label>;
+  argTypes: {
+    disabled: { control: 'boolean' },
+    bgcolor: { control: 'color' },
+    fontWeight: { control: 'text' },
+    children: { control: 'text' }
+  },
+};
 
 export default meta;
-type Story = StoryObj<typeof meta>;
+
+type Story = StoryObj<typeof Label>;
 
 export const Default: Story = {
   args: {
-    text: 'Label Text',
+    children: 'Label Text',
+    disabled: false,
+    bgcolor: 'purple',
+    fontWeight: 'bold',
+  },
+};
+
+export const Disabled: Story = {
+  args: {
+    children: 'Label Text',
+    disabled: true,
+    bgcolor: 'lightgray',
+    fontWeight: 'normal',
   },
 };

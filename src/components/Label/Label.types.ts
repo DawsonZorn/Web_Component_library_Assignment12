@@ -1,4 +1,7 @@
 export interface LabelProps {
-  text: string;
+  children: React.ReactNode;
   htmlFor?: string;
+  disabled?: boolean;
+  bgcolor?: string;
+  fontWeight?: string;
 }

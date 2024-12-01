@@ -19,7 +19,7 @@ export const Default: Story = {
   args: {
     children: 'Click Me',
     disabled: false,
-    bgColor: 'blue',
+    bgColor: "#ff2e00",
   },
 };
 
@@ -27,6 +27,6 @@ export const Disabled: Story = {
   args: {
     children: 'Click Me',
     disabled: true,
-    bgColor: 'blue',
+    bgColor: "grey",
   },
 };
