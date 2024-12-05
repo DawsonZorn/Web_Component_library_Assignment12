@@ -1,8 +1,8 @@
 # Use Node.js as the base image
-FROM node:16
+FROM node:22-alpine
 
 # Set the working directory in the container
-WORKDIR /Zorn_Dawson_ui_garden
+WORKDIR /zorn_dawson_ui_garden
 
 # Copy package.json and install dependencies
 COPY package.json package-lock.json ./
@@ -16,6 +16,9 @@ RUN npm run build
 
 # Install serve to serve the production build
 RUN npm install -g serve
+
+# Set environment variable for the port
+ENV PORT=8083
 
 # Expose the necessary port
 EXPOSE 8083

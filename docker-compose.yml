@@ -1,0 +1,18 @@
+version: '3.8'
+
+services:
+  react:
+    container_name: zorn_dawson_coding_assignment12
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8083:8083"
+
+  storybook:
+    container_name: zorn_dawson_coding_assignment12_storybook
+    build:
+      context: .
+      dockerfile: Dockerfile.storybook
+    ports:
+      - "6006:6006"

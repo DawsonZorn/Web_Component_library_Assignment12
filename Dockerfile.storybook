@@ -1,0 +1,25 @@
+# Dockerfile.storybook
+
+# Use a lightweight Node.js image
+FROM node:22-alpine
+
+# Set the working directory
+WORKDIR /app
+
+# Copy package.json and package-lock.json to install dependencies first
+COPY package*.json ./
+
+# Install dependencies
+RUN npm install
+
+# Copy the rest of the application files
+COPY . .
+
+# Set environment variable for the port
+ENV PORT=6006
+
+# Expose Storybook's default port
+EXPOSE 6006
+
+# Start Storybook on port 6006 without opening a browser
+CMD ["npm", "run", "storybook", "--", "--no-open", "-p", "6006"]
