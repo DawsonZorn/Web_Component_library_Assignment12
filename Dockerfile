@@ -2,7 +2,7 @@
 FROM node:22-alpine
 
 # Set the working directory in the container
-WORKDIR /zorn_dawson_ui_garden
+WORKDIR /zorn_dawson_ui_garden_build_checks
 
 # Copy package.json and install dependencies
 COPY package.json package-lock.json ./
@@ -18,10 +18,10 @@ RUN npm run build
 RUN npm install -g serve
 
 # Set environment variable for the port
-ENV PORT=8083
+ENV PORT=8018
 
 # Expose the necessary port
-EXPOSE 8083
+EXPOSE 8018
 
 # Command to serve the app
-CMD ["serve", "-s", "build", "-l", "8083"]
+CMD ["serve", "-s", "build", "-l", "8018"]
