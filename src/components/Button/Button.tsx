@@ -10,6 +10,7 @@ const StyledButton = styled.button<ButtonProps>`
 `;
 
 const Button: React.FC<ButtonProps> = ({ children, disabled, bgColor }) => {
+  const unusedVariable = 'This is unused'; // ESLint will complain about this
   return (
     <StyledButton disabled={disabled} bgColor={bgColor}>
       {children}
@@ -17,4 +18,4 @@ const Button: React.FC<ButtonProps> = ({ children, disabled, bgColor }) => {
   );
 };
 
-export default Button;
+export default Button //missing semicolon to fail prettier test
